@@ -1,24 +1,33 @@
-# README
+# An Anthologoy of Interesting ActiveRecord Anecdotes (AIAA)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Setup
 
-Things you may want to cover:
+## Create user in database if you don't already have one
+    psql -U postgres -c "CREATE USER `echo $USER` SUPERUSER;"
 
-* Ruby version
+## Create the database
+    rails db:setup
 
-* System dependencies
+## Anecdote 1
 
-* Configuration
+If you have a database, you _need_ a working database connection to be able to make your first request to Rails. Even if the request you make does not does not require a call to the database (development only)
 
-* Database creation
+### Happy path
+1. Start Database
+2. Start Rails
+3. Request /ping ✅
+4. Kill Database
+5. Request /ping ✅
 
-* Database initialization
+### Sad path
+1. Start Rails
+2. Request /ping ❌
+3. Start Database
+4. Request /ping ✅
 
-* How to run the test suite
+### Why?
+Rails wants to check for pending migrations on the first request requiring a connection.
 
-* Services (job queues, cache servers, search engines, etc.)
+    config.active_record.migration_error = :page_load
 
-* Deployment instructions
-
-* ...
+This is only on in development by default, no other options exist
