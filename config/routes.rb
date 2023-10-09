@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "/ping", to: proc { [200, {}, ["pong"]] }
 
-  namespace :annecdotes do
+  namespace :anecdotes do
     get :example_2_a, :example_2_b
   end
 end

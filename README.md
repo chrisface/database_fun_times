@@ -39,7 +39,7 @@ Rails has a query cache and executing the same query can return the same result.
 ### Reproduction
 
 1. Try and predict what the code for example_2 will display
-2. Be surprised http://localhost:3000/annecdotes/example_2_a
+2. Be surprised http://localhost:3000/anecdotes/example_2_a
 3. Try and guess what will happen when reloading the page
 4. Possibly be wrong again
 
@@ -51,7 +51,7 @@ Query Cache! ActiveRecord is smart and wont repeat a query if it thinks it doesn
       # I will not cache queries
     end
 
-Try again with `uncached`: http://localhost:3000/annecdotes/example_2_b
+Try again with `uncached`: http://localhost:3000/anecdotes/example_2_b
 
 The cache is at the connection pool level. You can turn it on/off, have a look inside anytime you like.
 

@@ -1,4 +1,4 @@
-class AnnecdotesController < ApplicationController
+class AnecdotesController < ApplicationController
 
     before_action { @results = [] }
 
